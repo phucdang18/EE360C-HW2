@@ -23,12 +23,12 @@ public class Monkey {
     	try {    	
     		// Left Monkey
     		if(direction == 0) {
-    			while(rightNum > 0 || (rightNum + leftNum == 3) || kongFlag) {full.await();}
+    			while(rightNum > 0 || (leftNum == 3) || kongWants) {full.await();}
     			leftNum++;
     		}
     		// Right Monkey
     		else if (direction == 1){
-    			while(leftNum > 0 || (rightNum + leftNum == 3) || kongFlag) {full.await();}
+    			while(leftNum > 0 || (rightNum == 3) || kongWants) {full.await();}
     			rightNum++;
     		}
     		// Kong
