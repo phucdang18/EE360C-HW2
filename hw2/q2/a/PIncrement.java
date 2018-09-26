@@ -54,7 +54,7 @@ public class PIncrement implements Runnable{
     	while(true) {
     		while(turn != -1) {};
     		turn = i;
-    		try {Thread.sleep(0, 5000);}
+    		try {Thread.sleep(0, 10000);}
     		catch(InterruptedException e) {};
     		if(turn == i) return;		
     	}
