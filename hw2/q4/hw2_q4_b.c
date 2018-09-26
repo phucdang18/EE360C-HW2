@@ -6,10 +6,9 @@ double MonteCarlo(int s)
 {
 	double inCircle = 0;
 	double outCircle = 0;
-	int count = 0;
 	int R = RAND_MAX/2;
 
-#pragma omp parallel num_threads(10) shared(inCircle, outCircle, R, count)
+#pragma omp parallel num_threads(10) shared(inCircle, outCircle, R)
 	{
 		int i;
 		for (i = omp_get_thread_num(); i < s; i += 10) {
@@ -21,7 +20,6 @@ double MonteCarlo(int s)
 #pragma omp critical
 				{
 					inCircle = inCircle + 1;
-					count++;
 
 				}
 			}
@@ -29,7 +27,6 @@ double MonteCarlo(int s)
 #pragma omp critical
 				{
 					outCircle = outCircle + 1;
-					count++;
 
 				}
 			}
@@ -38,7 +35,7 @@ double MonteCarlo(int s)
 
 	}
 
-	return (inCircle / outCircle);
+	return ((inCircle / (inCircle + outCircle))*4);
 
 }
 
