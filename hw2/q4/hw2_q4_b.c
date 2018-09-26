@@ -7,7 +7,7 @@ double MonteCarlo(int s)
 	double inCircle = 0;
 	double outCircle = 0;
 	int count = 0;
-	int R = 32767;
+	int R = 15000;
 
 #pragma omp parallel num_threads(10) shared(inCircle, outCircle, R, count)
 	{
@@ -44,8 +44,7 @@ double MonteCarlo(int s)
 void main()
 {
 double pi;
-//pi=MonteCarlo(100000000);
-pi = MonteCarlo(10000000000000);
+pi=MonteCarlo(100000000);
 printf("Value of pi is: %lf\n",pi);
 }
 
