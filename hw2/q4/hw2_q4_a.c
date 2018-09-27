@@ -84,6 +84,8 @@ void MatrixMult(char file1[], char file2[], int T)
 		result[i] = (double *)calloc(1, *col2 * sizeof(double));
 	}
 
+
+	double st = omp_get_wtime();
 #pragma omp parallel num_threads(T)
 	{
 		int i, j, k;
@@ -98,6 +100,10 @@ void MatrixMult(char file1[], char file2[], int T)
 			}
 		}
 	}
+
+	double en = omp_get_wtime();
+	printf("Time %lf\n", en - st);
+	printf("Thread %d\n", T);
 
 	printf("%d %d\n", *row1, *col2);
 	for (i = 0; i < *row1; i++) {
@@ -119,20 +125,11 @@ void MatrixMult(char file1[], char file2[], int T)
 
 void main(int argc, char *argv[])
 {
-	struct timeb start, end;
-	int diff;
 	char *file1, *file2;
 	file1 = argv[1];
 	file2 = argv[2];
 	int T = atoi(argv[3]);
-	ftime(&start);
 	MatrixMult(file1, file2, T);
-	ftime(&end);
-	diff = (int)(1000.0 * (end.time - start.time)
-		+ (end.millitm - start.millitm));
-
-	printf("\nOperation took %u milliseconds\n", diff);
-	printf("\nThread is %u\n", T);
 }
 
 
