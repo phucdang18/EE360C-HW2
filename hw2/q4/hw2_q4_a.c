@@ -3,7 +3,6 @@
 #include <omp.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys\timeb.h>
 
 double ** parseMatrix(int *row, int *col, FILE* fp) {
 	char c[2];
