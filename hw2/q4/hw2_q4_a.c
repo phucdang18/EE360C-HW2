@@ -130,5 +130,3 @@ void main(int argc, char *argv[])
 	int T = atoi(argv[3]);
 	MatrixMult(file1, file2, T);
 }
-
-
