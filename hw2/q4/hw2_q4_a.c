@@ -101,8 +101,8 @@ void MatrixMult(char file1[], char file2[], int T)
 	}
 
 	double en = omp_get_wtime();
-	//printf("Time %lf\n", en - st);
-	//printf("Thread %d\n", T);
+	/*printf("Time %lf\n", en - st);*/
+	/*printf("Thread %d\n", T);*/
 
 	printf("%d %d\n", *row1, *col2);
 	for (i = 0; i < *row1; i++) {
