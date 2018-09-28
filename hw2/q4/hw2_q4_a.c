@@ -42,7 +42,7 @@ double ** parseMatrix(int *row, int *col, FILE* fp) {
 			if (c[0] != ' ' && c[0] != EOF && c[0] != '\n' && c[0] != NULL) {
 				num = (char*)calloc(1, 100 * sizeof(char));
 				while (c[0] != ' ' && c[0] != EOF && c[0] != '\n') {
-					strcat(num, &c);
+					strcat(num, c);
 					c[0] = fgetc(fp);
 				}
 				matrix[i][j] = strtod(num, NULL);
@@ -101,8 +101,8 @@ void MatrixMult(char file1[], char file2[], int T)
 	}
 
 	double en = omp_get_wtime();
-	printf("Time %lf\n", en - st);
-	printf("Thread %d\n", T);
+	//printf("Time %lf\n", en - st);
+	//printf("Thread %d\n", T);
 
 	printf("%d %d\n", *row1, *col2);
 	for (i = 0; i < *row1; i++) {
